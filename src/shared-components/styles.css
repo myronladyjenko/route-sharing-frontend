@@ -49,6 +49,29 @@ body {
     transition: all 0.4s;
 }
 
+<<<<<<< Updated upstream
 p {
     
+=======
+.navbar {
+    color: #273438;
+    border-color: #273438;
+    width: 100%;
+    height: 40px;
+    padding: 0px;
+    border-bottom: 2px solid;
+    background-color: #EEEEEE;
+    position: relative;
+    z-index: 10;
+
+    /* x-off, y-off, blur, spread */
+    box-shadow: 0px 0px 5px 0px #273438;
+}
+
+.navlink {
+    color: #273438;
+    padding: 20px 75px;
+    font-weight: bold;
+    font-family: sans-serif;
+>>>>>>> Stashed changes
 }
