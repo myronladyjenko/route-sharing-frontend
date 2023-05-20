@@ -1,6 +1,6 @@
 body {
     height:max-content;
-    background-color: aqua;
+    background-color: whitesmoke;
     overflow:hidden;
     margin:0;
 }
@@ -52,32 +52,35 @@ body {
 .navbar {
     color: #273438;
     border-color: #273438;
-    width: 100%;
-    height: 50px;
-    padding: 0px;
+    padding: 0;
+    margin: 0;
     border-bottom: 2px solid;
     background-color: #EEEEEE;
-    position: relative;
-    z-index: 10;
-
     /* x-off, y-off, blur, spread */
     box-shadow: 0px 0px 5px 0px #273438;
+    list-style-type: none;
+    overflow: hidden;
 }
 
-.navlinks {
-    width: 70%;
-    margin: auto;
+
+.navbar > li {
+    display: inline-block;
 }
 
 .navlink {
-    display: inline-block;
+    display: block;
     color: #273438;
-    padding: 0px 69px;
+    padding: 8px;   
     font-weight: bold;
     font-family: sans-serif;
     text-decoration: none;
+    text-align: center;
 }
 
-.navlink p {
-    padding: 0px;
+.navlink-active{
+    background-color: #cbcbcb;
+}
+
+.navbar-link{
+    display: inline-block;
 }

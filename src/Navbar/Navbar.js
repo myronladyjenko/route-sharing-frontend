@@ -14,21 +14,27 @@ export function Navbar() {
     // </button>
 
     return (
-        <div className="navbar">
-            <div className='navlinks'>
-                <NavLink to="/" className='navlink'>
-                    <p>Home</p>
+        <ul className='navbar'>
+            <li style={{float:'left'}}>
+                <NavLink to="/" className='navlink' style={({isActive}) => isActive ? {backgroundColor:"#cbcbcb"} : {}}>
+                    Home
                 </NavLink>
-                <NavLink to="/browse" className='navlink'>
-                    <p>Browse</p>
-                </NavLink>
-                <NavLink to="/create" className='navlink'>
-                    <p>Create</p>
-                </NavLink>
-                <NavLink to="/collection" className='navlink'>
-                    <p>My Collection</p>
-                </NavLink>
-            </div>
-        </div>
+            </li>
+            <li style={{float:'right'}}>
+            <NavLink to="/browse" className='navlink' style={({isActive}) => isActive ? {backgroundColor:"#cbcbcb"} : {}}>
+                Browse
+            </NavLink>
+            </li>
+            <li style={{float:'right'}}>
+            <NavLink to="/create" className='navlink' style={({isActive}) => isActive ? {backgroundColor:"#cbcbcb"} : {}}>
+                Create
+            </NavLink>
+            </li>
+            <li style={{float:'right'}}>
+            <NavLink to="/collection" className='navlink' style={({isActive}) => isActive ? {backgroundColor:"#cbcbcb"} : {}}>
+                My Collection
+            </NavLink>
+            </li>
+        </ul>
     );
 }

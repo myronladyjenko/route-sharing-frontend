@@ -10,8 +10,10 @@ function App() {
   return (
     <BrowserRouter>
       <Providers>
-        <Navbar/>
-        <AppRoutes/>
+        <div>
+          <Navbar/>
+          <AppRoutes></AppRoutes>
+        </div>
       </Providers>
     </BrowserRouter>
   );
