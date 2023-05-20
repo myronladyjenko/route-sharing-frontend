@@ -15,7 +15,7 @@ export function Navbar() {
     // </button>
 
     return (
-        <div>
+        <div className="navbar">
             <a className='navlink'>Home</a>
             <a className='navlink'>Browse</a>
             <a className='navlink'>Create</a>
