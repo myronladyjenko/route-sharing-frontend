@@ -1,4 +1,4 @@
 //this should be the main homepage?
 export function Home(){
-    return <>Homepage</>;
+    return (<h1 style={{textAlign: "center"}}>CLIMBING FOR EVERYONE</h1>);
 }
