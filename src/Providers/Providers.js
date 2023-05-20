@@ -1,6 +1,5 @@
-import { createContext } from "react";
-const SessionContext = createContext('noSession');
+import { SessionProvider } from "./SessionContext";
 
 export const Providers = ({children}) => {
-    return (<SessionContext.Provider >{children}</SessionContext.Provider>)
+    return (<SessionProvider>{children}</SessionProvider>);
 }
