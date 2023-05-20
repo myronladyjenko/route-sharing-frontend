@@ -1,5 +1,5 @@
 
 
 export function Editor(){
-    return <></>
+    return <div>Editor</div>
 }
