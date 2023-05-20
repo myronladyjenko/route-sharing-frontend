@@ -78,11 +78,24 @@ body {
     height:21px;
 }
 
-
 .navlink-active{
     background-color: #cbcbcb;
 }
 
 .navbar-link{
     display: inline-block;
+}
+
+.climb-preview-list{
+
+}
+
+.climb-preview-card{
+    overflow:hidden;
+    display:inline-block;
+    flex-direction: column;
+    height: 300px;
+    width: 250px;
+    background: linear-gradient(165.74deg, #1FC81B 2.89%, rgba(31, 200, 27, 0.652174) 27.26%, rgba(31, 200, 27, 0) 27.27%);
+    box-shadow: 3px 4px 7px 1px rgba(0, 0, 0, 0.2);
 }
