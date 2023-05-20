@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './shared-components/styles.css'
 import { Providers } from './Providers/Providers';
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
             <button className="actionButton" disabled={true}>Click Me!</button>
           </div>
           <div>
-            <button disabled={true}>Click Me!</button>
+            <button className="action-button button-transition" disabled={true}>Click Me!</button>
           </div>
           <p>
             Edit <code>src/App.js</code> and save to reload.
