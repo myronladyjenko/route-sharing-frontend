@@ -49,10 +49,6 @@ body {
     transition: all 0.4s;
 }
 
-<<<<<<< Updated upstream
-p {
-    
-=======
 .navbar {
     color: #273438;
     border-color: #273438;
@@ -73,5 +69,4 @@ p {
     padding: 20px 75px;
     font-weight: bold;
     font-family: sans-serif;
->>>>>>> Stashed changes
 }
