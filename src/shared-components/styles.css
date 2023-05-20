@@ -55,7 +55,7 @@ body {
     padding: 0;
     margin: 0;
     border-bottom: 2px solid;
-    background-color: #EEEEEE;
+    background-color: rgb(238, 238, 238);
     /* x-off, y-off, blur, spread */
     box-shadow: 0px 0px 5px 0px #273438;
     list-style-type: none;
@@ -75,7 +75,9 @@ body {
     font-family: sans-serif;
     text-decoration: none;
     text-align: center;
+    height:21px;
 }
+
 
 .navlink-active{
     background-color: #cbcbcb;

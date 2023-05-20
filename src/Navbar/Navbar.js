@@ -1,6 +1,7 @@
 //import { Router, NavLink, BrowserRouter } from 'react-router-dom';
 import '../shared-components/styles.css';
 import { NavLink } from 'react-router-dom';
+import logo from '../images/logo.png';
 
 export function Navbar() {
     // const [count, setCount] = useState(0);
@@ -16,8 +17,8 @@ export function Navbar() {
     return (
         <ul className='navbar'>
             <li style={{float:'left'}}>
-                <NavLink to="/" className='navlink' style={({isActive}) => isActive ? {backgroundColor:"#cbcbcb"} : {}}>
-                    Home
+                <NavLink to="/" className='navlink' style={{padding:'0'}}>
+                    <img src={logo} alt="home" style={{height:'37px', width:"auto", padding:'0'}}></img>
                 </NavLink>
             </li>
             <li style={{float:'right'}}>
