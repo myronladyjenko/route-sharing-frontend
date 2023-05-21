@@ -1,4 +1,5 @@
 import { createUseStyles } from "react-jss";
+import { AddedHoldEntry } from "./AddedHoldEntry";
 
 export const ClimbEditor = () => {
   const [holdType, setHoldType] = useState("none");
@@ -9,6 +10,12 @@ export const ClimbEditor = () => {
     setHoldType(newHoldType);
     updateAvailableHolds(
       JSON.parse(sessionStorage.getItem("holds"))[newHoldType]
+    );
+  };
+
+  const removeHold = (hold) => {
+    updateCurrentHolds(
+      currentHolds.filter((currentHold) => currentHold.id !== hold.id)
     );
   };
 
@@ -36,6 +43,9 @@ export const ClimbEditor = () => {
     <div>
       <div>
         <h1>Current List Types</h1>
+        {currentHolds.map((hold, index) => {
+          <AddedHoldEntry key={index} hold={hold}></AddedHoldEntry>;
+        })}
       </div>
     </div>
   );

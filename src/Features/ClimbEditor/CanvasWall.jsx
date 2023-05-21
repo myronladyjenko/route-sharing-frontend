@@ -23,12 +23,6 @@ export function CanvasWall({ props, children, holds }) {
     updateCurrentHolds([...currentHolds, hold]);
   };
 
-  const removeHold = (hold) => {
-    updateCurrentHolds(
-      currentHolds.filter((currentHold) => currentHold.id !== hold.id)
-    );
-  };
-
   const updateClimbName = (newClimbName) => {
     setClimbName(newClimbName);
   };
