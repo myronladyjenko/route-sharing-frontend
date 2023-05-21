@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { useServer } from "../Providers/ServerContext";
 import { ClimbPreviewCard } from "../Components/ClimbPreviewCard";
-import { HoldSelectionList } from "../Components/HoldSelectionList";
-import axiosConfig from "../shared-components/axiosConfig";
+import Dropdown from "../Components/HoldSelectionList";
+import axios from "axios";
 
 function getClimbs(baseURL) {
   if (sessionStorage.length === 0) {
@@ -11,7 +11,7 @@ function getClimbs(baseURL) {
 }
 
 function fetchClimb(baseURL) {
-  axiosConfig
+  axios
     .get(`${baseURL}climbConfigs`)
     .then((response) => {
       sessionStorage.setItem("holds", JSON.stringify(response.data));
@@ -65,7 +65,7 @@ export function Editor() {
 
   return (
     <div>
-      <HoldSelectionList></HoldSelectionList>
+      <Dropdown></Dropdown>
       {/* <ClimbPreviewCard
         climbName={"Climb Name"}
         climbDesc={"A lol"}

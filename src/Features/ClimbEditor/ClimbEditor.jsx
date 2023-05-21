@@ -33,18 +33,25 @@ export const ClimbEditor = () => {
   }
 
   return (
-
-  )
+    <div>
+      <div>
+        <h1>Current List Types</h1>
+      </div>
+    </div>
+  );
 };
 
-
 const useStyles = createUseStyles({
-    canvas: {
-        display: "flex",
-        width: "calc(700px + 10%)",
-        float: "right",
-        overflow: "hidden",
-        
-    }
-
+  canvas: {
+    display: "flex",
+    width: "calc(700px + 10%)",
+    float: "right",
+    overflow: "hidden",
+  },
+  sidebar: {
+    display: "flex",
+    width: "calc(300px + 10%)",
+    float: "left",
+    overflow: "hidden",
+  },
 });
