@@ -20,18 +20,18 @@ function fetchClimb(baseURL) {
     .catch((error) => console.log(error));
 }
 
-function postClimb() {
+function postClimb(baseURL) {
 
-  axios.post("/create-climb", {
+  axios.post(`${baseURL}create-climb`, {
     name: "omega epic climb",
-    difficulty: "V4/6B+",
-    author: "Your mother",
-    region: "hell",
-    width: 500,
-    height: 1000,
-    angle: 69,
-    hold_theme: "Mesa Biome",
-    holds: [{id: 1, x: 20, y: 20, rotation: 90}, {id: 2, x: 69, y: 420, rotation: 0}, {id: 3, x: 42, y: 5, rotation: 34}, {id: 7, x: 236, y: 5, rotation: 123}]
+    difficulty:"V4/6B+",
+    author:"Your mother",
+    region:"hell",
+    width:500,
+    height:1000,
+    angle:69,
+    hold_theme:"Mesa Biome",
+    holds:[{id: 1, x: 20, y: 20, rotation: 90}, {id: 2, x: 69, y: 420, rotation: 0}, {id: 3, x: 42, y: 5, rotation: 34}, {id: 7, x: 236, y: 5, rotation: 123}]
   })
   .then(function (response) {
     console.log(response);
@@ -39,7 +39,7 @@ function postClimb() {
   .catch(function (error) {
     console.log(error);
   });
-  
+
 }
 
 export function Editor() {
@@ -54,7 +54,7 @@ export function Editor() {
         publicKey={"192ohfkwhdsaif"}
       />
       <button onClick={() => getClimbs(baseURL)}>Get Climbs</button> */}
-      <button onClick={() => postClimb()}>Send test climb</button>
+      <button onClick={() => postClimb(baseURL)}>Send test climb</button>
     </div>
   );
 }
