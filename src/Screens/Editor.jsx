@@ -22,22 +22,29 @@ function fetchClimb(baseURL) {
 
 function postClimb(baseURL) {
   axios
-    .post(`${baseURL}create-climb`, {
-      name: "omega epic climb",
-      difficulty: "V4/6B+",
-      author: "Your mother",
-      region: "hell",
-      width: 500,
-      height: 1000,
-      angle: 69,
-      hold_theme: "Mesa Biome",
-      holds: [
-        { id: 1, x: 20, y: 20, rotation: 90 },
-        { id: 2, x: 69, y: 420, rotation: 0 },
-        { id: 3, x: 42, y: 5, rotation: 34 },
-        { id: 7, x: 236, y: 5, rotation: 123 },
-      ],
-    })
+    .post(
+      `${baseURL}create-climb`,
+      {
+        name: "omega epic climb",
+        difficulty: "V4/6B+",
+        author: "Your mother",
+        region: "hell",
+        width: 500,
+        height: 1000,
+        angle: 69,
+        hold_theme: "Mesa Biome",
+        holds: [
+          { id: 1, x: 20, y: 20, rotation: 90 },
+          { id: 2, x: 69, y: 420, rotation: 0 },
+          { id: 3, x: 42, y: 5, rotation: 34 },
+          { id: 7, x: 236, y: 5, rotation: 123 },
+        ],
+      },
+      {
+        withCredentials: false,
+        headers: { "Access-Control-Allow-Origin": `http://127.0.0.1:5173/` },
+      }
+    )
     .then(function (response) {
       console.log(response);
     })
@@ -54,7 +61,9 @@ export function Editor() {
 
   const updateHoldType = (newHoldType) => {
     setHoldType(newHoldType);
-    availableHolds = JSON.parse(sessionStorage.getItem("holds"))[newHoldType];
+    updateAvailableHolds(
+      JSON.parse(sessionStorage.getItem("holds"))[newHoldType]
+    );
   };
 
   if (holdType === "none") {
