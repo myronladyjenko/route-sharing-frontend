@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { useServer } from "../Providers/ServerContext";
 import { ClimbPreviewCard } from "../Components/ClimbPreviewCard";
-
-import axios from "axios";
+import { HoldSelectionList } from "../Components/HoldSelectionList";
+import axiosConfig from "../shared-components/axiosConfig";
 
 function getClimbs(baseURL) {
   if (sessionStorage.length === 0) {
@@ -11,7 +11,7 @@ function getClimbs(baseURL) {
 }
 
 function fetchClimb(baseURL) {
-  axios
+  axiosConfig
     .get(`${baseURL}climbConfigs`)
     .then((response) => {
       sessionStorage.setItem("holds", JSON.stringify(response.data));
@@ -21,30 +21,31 @@ function fetchClimb(baseURL) {
 }
 
 function postClimb(baseURL) {
-  axios
-    .post(
-      `${baseURL}create-climb`,
-      {
-        name: "omega epic climb",
-        difficulty: "V4/6B+",
-        author: "Your mother",
-        region: "hell",
-        width: 500,
-        height: 1000,
-        angle: 69,
-        hold_theme: "Mesa Biome",
-        holds: [
-          { id: 1, x: 20, y: 20, rotation: 90 },
-          { id: 2, x: 69, y: 420, rotation: 0 },
-          { id: 3, x: 42, y: 5, rotation: 34 },
-          { id: 7, x: 236, y: 5, rotation: 123 },
-        ],
-      },
-      {
-        withCredentials: false,
-        headers: { "Access-Control-Allow-Origin": `http://127.0.0.1:5173/` },
-      }
-    )
+  fetch(`${baseURL}create-climb`, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      name: "omega epic climb",
+      difficulty: "V4/6B+",
+      author: "Your mother",
+      region: "hell",
+      width: 500,
+      height: 1000,
+      angle: 69,
+      hold_theme: "Mesa Biome",
+      holds: [
+        { id: 1, x: 20, y: 20, rotation: 90 },
+        { id: 2, x: 69, y: 420, rotation: 0 },
+        { id: 3, x: 42, y: 5, rotation: 34 },
+        { id: 7, x: 236, y: 5, rotation: 123 },
+      ],
+    }),
+    headers: {
+      withCredentials: false,
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": `*`,
+    },
+  })
     .then(function (response) {
       console.log(response);
     })
@@ -54,39 +55,17 @@ function postClimb(baseURL) {
 }
 
 export function Editor() {
-  const [holdType, setHoldType] = useState("none");
-  const [currentHolds, updateCurrentHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
-  const [availableHolds, updateAvailableHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
+  const [climbName, setClimbName] = useState("Climb Name");
+  const [climbDesc, setClimbDesc] = useState("Climb Description");
+  const [climbSetter, setClimbSetter] = useState("Climb Setter");
+  const [climbDiff, setClimbDiff] = useState("Climb Difficulty");
   const baseURL = useServer();
 
-  const updateHoldType = (newHoldType) => {
-    setHoldType(newHoldType);
-    updateAvailableHolds(
-      JSON.parse(sessionStorage.getItem("holds"))[newHoldType]
-    );
-  };
+  const addHold = (hold) => {};
 
-  if (holdType === "none") {
-    console.log(JSON.parse(sessionStorage.getItem("holds")));
-    return (
-      <div>
-        <h1>Select a hold type to use</h1>
-        <div>
-          {Object.entries(JSON.parse(sessionStorage.getItem("holds"))).map(
-            ([holdType, arr], index) => {
-              return (
-                <button key={index} onClick={() => updateHoldType(holdType)}>
-                  {holdType}
-                </button>
-              );
-            }
-          )}
-        </div>
-      </div>
-    );
-  }
   return (
     <div>
+      <HoldSelectionList></HoldSelectionList>
       {/* <ClimbPreviewCard
         climbName={"Climb Name"}
         climbDesc={"A lol"}
