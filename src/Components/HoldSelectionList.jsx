@@ -34,6 +34,18 @@ export default function Dropdown({ placeHolder, optionalCallExpression = [] }) {
         return placeHolder;
     };
 
+    const onItemClick = (option) => {
+        setSelectedVal(option);
+    }
+
+    const isSelected = (option) => {
+        if (!selectedVal) {
+            return false;
+        }
+
+        return selectedVal.key === option.key;
+    }
+
     return (
         <div className="dropdown-container">
         <div className="dropdown-input" onClick={handleInputClick}>
@@ -47,9 +59,13 @@ export default function Dropdown({ placeHolder, optionalCallExpression = [] }) {
         {menuOpen && (
             <div className="dropdown-menu">
                 {optionalCallExpression.map((option) => (
-                <div key={option.value} className="dropdown-item">
-                    {option.value}
-                </div>
+                    <div 
+                     key={option.key} 
+                     className={`dropdown-item ${isSelected(option) && "selected"}`}
+                     onClick={() => onItemClick(option)}
+                    >
+                        {option.value}
+                    </div>
                 ))}
             </div>
         )}

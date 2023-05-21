@@ -148,3 +148,8 @@ body {
     background: #9fc3f870;
   }
 
+  .dropdown-item.selected {
+    background-color: #0d6efd;
+    color: #fff;
+}
+

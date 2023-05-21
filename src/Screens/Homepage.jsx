@@ -4,11 +4,11 @@ import { createUseStyles } from "react-jss";
 
 import Lol from "../Components/HoldSelectionList";
 const options = [
-  {value: "Peaches"},
-  {value: "Peaches"},
-  {value: "Peaches"},
-  {value: "Peaches"},
-  {value: "Peaches"},
+  {value: "Peaches", key: "1"},
+  {value: "Peaches", key: "2"},
+  {value: "Peaches", key: "lol"},
+  {value: "Bowser", key: "you're"},
+  {value: "Mario", key: "cringe"}
 ];
 
 export function Home() {
