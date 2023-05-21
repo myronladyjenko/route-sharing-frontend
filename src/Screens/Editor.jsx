@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useServer } from "../Providers/ServerContext";
 import { ClimbPreviewCard } from "../Components/ClimbPreviewCard";
 import Dropdown from "../Components/HoldSelectionList";
+import { ClimbEditor } from "../Features/ClimbEditor/ClimbEditor";
 import axios from "axios";
 
 function getClimbs(baseURL) {
@@ -75,6 +76,7 @@ export function Editor() {
       />
       <button onClick={() => getClimbs(baseURL)}>Get Climbs</button> */}
       <button onClick={() => postClimb(baseURL)}>Send test climb</button>
+      <ClimbEditor></ClimbEditor>
     </div>
   );
 }

@@ -1,14 +1,51 @@
 import { createUseStyles } from "react-jss";
+import { AddedHoldEntry } from "./AddedHoldEntry";
+import { useEffect, useState } from "react";
+import { CanvasWall } from "./CanvasWall";
 
 export const ClimbEditor = () => {
   const [holdType, setHoldType] = useState("none");
   const [currentHolds, updateCurrentHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
-  const [availableHolds, updateAvailableHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
+  const [availableHolds, updateAvailableHolds] = useState([]);
+  const [canvasDimensions, setCanvasDimensions] = useState({ x: 100, y: 100 }); // [{id: 1, x: 20, y: 20, rotation: 90}
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [publicKey, setPublicKey] = useState("192ohfkwhdsaif");
+
+  const classes = useStyles();
 
   const updateHoldType = (newHoldType) => {
     setHoldType(newHoldType);
-    updateAvailableHolds(
-      JSON.parse(sessionStorage.getItem("holds"))[newHoldType]
+  };
+
+  useEffect(() => {
+    updateAvailableHolds(JSON.parse(sessionStorage.getItem("holds"))[holdType]);
+  }, [holdType]);
+
+  const updateCanvasDimensions = (newCanvasDimensions) => {
+    setCanvasDimensions({ ...newCanvasDimensions, newCanvasDimensions });
+  };
+
+  const addHold = (hold) => {
+    updateCurrentHolds([
+      ...currentHolds,
+      { id: hold, x: 0, y: 0, rotation: 0 },
+    ]);
+  };
+
+  const updateCurrentHold = (id, stats) => {
+    updateCurrentHolds(
+      currentHolds.map((hold) => {
+        if (hold.id === id) {
+          return { ...hold, ...stats };
+        }
+        return hold;
+      })
+    );
+  };
+
+  const removeHold = (hold) => {
+    updateCurrentHolds(
+      currentHolds.filter((currentHold) => currentHold.id !== hold.id)
     );
   };
 
@@ -34,9 +71,23 @@ export const ClimbEditor = () => {
 
   return (
     <div>
-      <div>
+      <div className={classes.sidebar}>
         <h1>Current List Types</h1>
+        {currentHolds.map((hold, index) => {
+          <AddedHoldEntry
+            key={index}
+            hold={hold}
+            canvasDimensions={canvasDimensions}
+            removeHoleHandler={() => removeHold(hold.id)}
+            updatingHoldHandler={updateCurrentHold}
+            isDisabled={!isSubmitting}
+          ></AddedHoldEntry>;
+        })}
       </div>
+      <CanvasWall
+        addedHolds={currentHolds}
+        isDisabled={!isSubmitting}
+      ></CanvasWall>
     </div>
   );
 };
