@@ -52,10 +52,10 @@ export function Editor() {
   const [availableHolds, updateAvailableHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
   const baseURL = useServer();
 
-  const updateHoldType(newHoldType) => {
+  const updateHoldType = (newHoldType) => {
     setHoldType(newHoldType);
     availableHolds = JSON.parse(sessionStorage.getItem("holds"))[newHoldType];
-  }
+  };
 
   if (holdType === "none") {
     console.log(JSON.parse(sessionStorage.getItem("holds")));
