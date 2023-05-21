@@ -12,24 +12,6 @@ export function CanvasWall({ props, children, holds }) {
   const [isError, setIsError] = useState(false);
   const [isErrorText, setIsErrorText] = useState("");
 
-  const updateHoldType = (newHoldType) => {
-    setHoldType(newHoldType);
-    updateAvailableHolds(
-      JSON.parse(sessionStorage.getItem("holds"))[newHoldType]
-    );
-  };
-
-  const addHold = (hold) => {
-    updateCurrentHolds([...currentHolds, hold]);
-  };
-
-  const updateClimbName = (newClimbName) => {
-    setClimbName(newClimbName);
-  };
-
-  const updateClimbDesc = (newClimbDesc) => {
-    setClimbDesc(newClimbDesc);
-  };
-
   const updateClimbSetter = (newClimbSetter) => {};
+  return <div></div>;
 }
