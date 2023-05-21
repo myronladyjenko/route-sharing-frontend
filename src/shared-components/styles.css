@@ -79,8 +79,12 @@ body {
   height: 21px;
 }
 
-.navlink-active {
-  background-color: #cbcbcb;
+.navlink:hover {
+    background-color: #dddddd;
+}
+
+.navlink-active{
+    background-color: #cbcbcb;
 }
 
 .navbar-link {

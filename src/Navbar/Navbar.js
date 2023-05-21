@@ -4,16 +4,6 @@ import { NavLink } from 'react-router-dom';
 import logo from '../images/logo.png';
 
 export function Navbar() {
-    // const [count, setCount] = useState(0);
-
-    // function handleClick() {
-    //   setCount(count + 1);
-    // }
-
-    // <button onClick={handleClick}>
-    //    Clicked {count} times
-    // </button>
-
     return (
         <ul className='navbar'>
             <li style={{float:'left'}}>
