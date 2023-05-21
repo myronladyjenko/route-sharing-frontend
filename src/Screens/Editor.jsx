@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useServer } from "../Providers/ServerContext";
 import { ClimbPreviewCard } from "../Components/ClimbPreviewCard";
 
@@ -21,29 +21,61 @@ function fetchClimb(baseURL) {
 }
 
 function postClimb(baseURL) {
-
-  axios.post(`${baseURL}create-climb`, {
-    name: "omega epic climb",
-    difficulty:"V4/6B+",
-    author:"Your mother",
-    region:"hell",
-    width:500,
-    height:1000,
-    angle:69,
-    hold_theme:"Mesa Biome",
-    holds:[{id: 1, x: 20, y: 20, rotation: 90}, {id: 2, x: 69, y: 420, rotation: 0}, {id: 3, x: 42, y: 5, rotation: 34}, {id: 7, x: 236, y: 5, rotation: 123}]
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
+  axios
+    .post(`${baseURL}create-climb`, {
+      name: "omega epic climb",
+      difficulty: "V4/6B+",
+      author: "Your mother",
+      region: "hell",
+      width: 500,
+      height: 1000,
+      angle: 69,
+      hold_theme: "Mesa Biome",
+      holds: [
+        { id: 1, x: 20, y: 20, rotation: 90 },
+        { id: 2, x: 69, y: 420, rotation: 0 },
+        { id: 3, x: 42, y: 5, rotation: 34 },
+        { id: 7, x: 236, y: 5, rotation: 123 },
+      ],
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 export function Editor() {
+  const [holdType, setHoldType] = useState("none");
+  const [currentHolds, updateCurrentHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
+  const [availableHolds, updateAvailableHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
   const baseURL = useServer();
+
+  const updateHoldType(newHoldType) => {
+    setHoldType(newHoldType);
+    availableHolds = JSON.parse(sessionStorage.getItem("holds"))[newHoldType];
+  }
+
+  if (holdType === "none") {
+    console.log(JSON.parse(sessionStorage.getItem("holds")));
+    return (
+      <div>
+        <h1>Select a hold type to use</h1>
+        <div>
+          {Object.entries(JSON.parse(sessionStorage.getItem("holds"))).map(
+            ([holdType, arr], index) => {
+              return (
+                <button key={index} onClick={() => updateHoldType(holdType)}>
+                  {holdType}
+                </button>
+              );
+            }
+          )}
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       {/* <ClimbPreviewCard
@@ -59,9 +91,8 @@ export function Editor() {
   );
 }
 
-
-
-{/*
+{
+  /*
 Name of climb - string
 Difficulty    - string
 Authour       - string
@@ -76,4 +107,5 @@ id - int
 x - int
 y - int
 rotation - int
-*/}
+*/
+}
