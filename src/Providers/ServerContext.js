@@ -1,5 +1,5 @@
 import { createContext, useContext} from "react";
-const ServerContext = createContext();
+const ServerContext = createContext("http://34.148.97.171/");
 
 export function ServerProvider({children}){
     const baseURL = "http://34.148.97.171/";
