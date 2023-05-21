@@ -1,25 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useServer } from "../Providers/ServerContext";
 import { ClimbPreviewCard } from "../Components/ClimbPreviewCard";
 import Dropdown from "../Components/HoldSelectionList";
 import { ClimbEditor } from "../Features/ClimbEditor/ClimbEditor";
 import axios from "axios";
-
-function getClimbs(baseURL) {
-  if (sessionStorage.length === 0) {
-    fetchClimb(baseURL);
-  }
-}
-
-function fetchClimb(baseURL) {
-  axios
-    .get(`${baseURL}climbConfigs`)
-    .then((response) => {
-      sessionStorage.setItem("holds", JSON.stringify(response.data));
-      console.log(response.data);
-    })
-    .catch((error) => console.log(error));
-}
 
 function postClimb(baseURL) {
   fetch(`${baseURL}create-climb`, {
@@ -66,7 +50,6 @@ export function Editor() {
 
   return (
     <div>
-      <Dropdown></Dropdown>
       {/* <ClimbPreviewCard
         climbName={"Climb Name"}
         climbDesc={"A lol"}

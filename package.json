@@ -2,8 +2,10 @@
   "name": "lol",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://www.api.com",
   "dependencies": {
     "@metamask/detect-provider": "^2.0.0",
+    "@metamask/sdk": "^0.2.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,6 +16,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jss": "^10.10.0",

@@ -1,13 +1,14 @@
-export const AddedHoldEntry = (
+import { useState } from "react";
+export const AddedHoldEntry = ({
   key,
   hold,
   removeHoleHandler,
   canvasDimensions,
   updatingHoldHandler,
-  isDisabled
-) => {
+  isDisabled,
+}) => {
   return (
-    <div key={key}>
+    <div key={key} style={{ display: "inline-flex" }}>
       <input
         type="range"
         min="0"
@@ -17,7 +18,7 @@ export const AddedHoldEntry = (
         id="xRange"
         isDisabled={isDisabled}
         onChange={(e) => {
-          updatingHoldHandler(hold.id, { x: e.target.value });
+          updatingHoldHandler({ x: e.target.value });
         }}
       />
       <input
@@ -29,7 +30,7 @@ export const AddedHoldEntry = (
         id="yRange"
         isDisabled={isDisabled}
         onChange={(e) => {
-          updatingHoldHandler(hold.id, { y: e.target.value });
+          updatingHoldHandler({ y: e.target.value });
         }}
       />
       <input
@@ -41,7 +42,7 @@ export const AddedHoldEntry = (
         id="rotRange"
         isDisabled={isDisabled}
         onChange={(e) => {
-          updatingHoldHandler(hold.id, { rotation: e.target.value });
+          updatingHoldHandler({ rotation: e.target.value });
         }}
       />
       <button onClick={removeHoleHandler}>Remove</button>
