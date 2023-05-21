@@ -1,20 +1,28 @@
 import { createUseStyles } from "react-jss";
 import { AddedHoldEntry } from "./AddedHoldEntry";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CanvasWall } from "./CanvasWall";
 
 export const ClimbEditor = () => {
   const [holdType, setHoldType] = useState("none");
   const [currentHolds, updateCurrentHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
-  const [availableHolds, updateAvailableHolds] = useState([]); // [{id: 1, x: 20, y: 20, rotation: 90}
+  const [availableHolds, updateAvailableHolds] = useState([]);
+  const [canvasDimensions, setCanvasDimensions] = useState({ x: 100, y: 100 }); // [{id: 1, x: 20, y: 20, rotation: 90}
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [publicKey, setPublicKey] = useState("192ohfkwhdsaif");
+
   const classes = useStyles();
 
   const updateHoldType = (newHoldType) => {
     setHoldType(newHoldType);
-    updateAvailableHolds(
-      JSON.parse(sessionStorage.getItem("holds"))[newHoldType]
-    );
+  };
+
+  useEffect(() => {
+    updateAvailableHolds(JSON.parse(sessionStorage.getItem("holds"))[holdType]);
+  }, [holdType]);
+
+  const updateCanvasDimensions = (newCanvasDimensions) => {
+    setCanvasDimensions({ ...newCanvasDimensions, newCanvasDimensions });
   };
 
   const addHold = (hold) => {
@@ -69,13 +77,17 @@ export const ClimbEditor = () => {
           <AddedHoldEntry
             key={index}
             hold={hold}
+            canvasDimensions={canvasDimensions}
             removeHoleHandler={() => removeHold(hold.id)}
             updatingHoldHandler={updateCurrentHold}
             isDisabled={!isSubmitting}
           ></AddedHoldEntry>;
         })}
       </div>
-      <CanvasWall holds={holds} isDisabled={!isSubmitting}></CanvasWall>
+      <CanvasWall
+        addedHolds={currentHolds}
+        isDisabled={!isSubmitting}
+      ></CanvasWall>
     </div>
   );
 };
