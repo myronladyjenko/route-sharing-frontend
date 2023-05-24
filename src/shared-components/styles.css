@@ -3,7 +3,9 @@ body {
   background-color: whitesmoke;
   overflow: hidden;
   margin: 0;
+  background-color: rgb(238, 238, 238);
 }
+
 .action-button {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20;
@@ -57,26 +59,29 @@ body {
   padding: 0;
   margin: 0;
   border-bottom: 2px solid;
-  background-color: rgb(238, 238, 238);
+  background-color: white;
   /* x-off, y-off, blur, spread */
   box-shadow: 0px 0px 5px 0px #273438;
   list-style-type: none;
   overflow: hidden;
+  text-align: center;
 }
 
 .navbar > li {
   display: inline-block;
+  text-align: center;
 }
 
 .navlink {
-  display: block;
+  display: inline-block;
   color: #273438;
-  padding: 8px;
+  padding: 20px 35px;
   font-weight: bold;
   font-family: sans-serif;
   text-decoration: none;
   text-align: center;
-  height: 21px;
+  height: 20px;
+  position: relative;
 }
 
 .navlink:hover {
@@ -89,6 +94,7 @@ body {
 
 .navbar-link {
   display: inline-block;
+  text-align: center;
 }
 
 .climb-preview-list {

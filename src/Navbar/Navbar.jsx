@@ -16,43 +16,43 @@ export function Navbar() {
 
   return (
     <ul className="navbar">
-      <li style={{ float: "left" }}>
-        <NavLink to="/" className="navlink" style={{ padding: "0" }}>
+      <li style={{ float: "left", height: "60px", position: "absolute", left: "0px" }}>
+        <NavLink to="/" className="navlink" style={{ bottom: "0px", padding: "0px", height: "100%" }}>
           <img
             src={logo}
             alt="home"
-            style={{ height: "37px", width: "auto", padding: "0" }}
+            style={{ height: "100%", padding: "0" }}
           ></img>
         </NavLink>
       </li>
-      <li style={{ float: "right" }}>
+      <li style={{ float: "none" }}>
         <NavLink
           to="/browse"
           className="navlink"
           style={({ isActive }) =>
-            isActive ? { backgroundColor: "#cbcbcb" } : {}
+            isActive ? { backgroundColor: "#273438", color: "white" } : {}
           }
         >
           Browse
         </NavLink>
       </li>
-      <li style={{ float: "right" }}>
+      <li style={{ float: "none" }}>
         <NavLink
           to="/create"
           className="navlink"
           style={({ isActive }) =>
-            isActive ? { backgroundColor: "#cbcbcb" } : {}
+            isActive ? { backgroundColor: "#273438", color: "white" } : {}
           }
         >
           Create
         </NavLink>
       </li>
-      <li style={{ float: "right" }}>
+      <li style={{ float: "none" }}>
         <NavLink
           to="/collection"
           className="navlink"
           style={({ isActive }) =>
-            isActive ? { backgroundColor: "#cbcbcb" } : {}
+            isActive ? { backgroundColor: "#273438", color: "white" } : {}
           }
         >
           My Collection
