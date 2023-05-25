@@ -31,9 +31,9 @@ const useStyles = createUseStyles({
     fontFamily: "Franklin Gothic Medium",
     color: "white",
     fontSize: "30px",
-    top: "18px",
-    left: "18px",
     position: "absolute",
+    marginLeft: "16px",
+    marginTop: "16px"
   },
   "inner-card": {
     padding: "60px 10px",
